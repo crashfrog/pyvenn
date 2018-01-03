@@ -7,31 +7,34 @@
 import matplotlib
 matplotlib.use('Agg')
 
+import itertools
 import matplotlib.pyplot as plt
+import random
 import venn
 
-labels = venn.get_labels([range(10), range(5, 15)], fill=['number', 'logic'])
-fig, ax = venn.venn2(labels, names=['list 1', 'list 2'])
-fig.savefig('venn2.png', bbox_inches='tight')
-plt.close()
+persist_to_files = True
 
-labels = venn.get_labels([range(10), range(5, 15), range(3, 8)], fill=['number', 'logic'])
-fig, ax = venn.venn3(labels, names=['list 1', 'list 2', 'list 3'])
-fig.savefig('venn3.png', bbox_inches='tight')
-plt.close()
+def random_set(population_size, sample_size):
+    samples = random.sample(range(population_size), sample_size)
+    return set(samples)
 
-labels = venn.get_labels([range(10), range(5, 15), range(3, 8), range(8, 17)], fill=['number', 'logic'])
-fig, ax = venn.venn4(labels, names=['list 1', 'list 2', 'list 3', 'list 4'])
-fig.savefig('venn4.png', bbox_inches='tight')
-plt.close()
+sets = [random_set(700, 600) for i in range(6)]
+names = ["Tokyo", "New York", "London", "Paris", "Beijing", "Sydney"]
+draw_funcs = [venn.venn2, venn.venn3, venn.venn4, venn.venn5, venn.venn6]
+file_names = ["venn2.png", "venn3.png", "venn4.png", "venn5.png", "venn6.png"]
+fill = [["logic", "number", "percent"]]
+fill += [x for x in itertools.combinations(["logic", "number", "percent"], 2)]
+fill += [["number"]]
+name_colors = ['black' for i in range(6)]
 
-labels = venn.get_labels([range(10), range(5, 15), range(3, 8), range(8, 17), range(10, 20)], fill=['number', 'logic'])
-fig, ax = venn.venn5(labels, names=['list 1', 'list 2', 'list 3', 'list 4', 'list 5'])
-fig.savefig('venn5.png', bbox_inches='tight')
-plt.close()
+for num_sets in range(2, 1+len(sets)):
+    idx = num_sets - 2
+    labels = venn.get_labels(sets[0:num_sets], fill=fill[idx])
+    fig, ax = draw_funcs[idx](labels, names[0:num_sets], name_colors=name_colors)
+    if persist_to_files:
+        fig.savefig(file_names[idx], bbox_inches='tight')
+        plt.close()
+    else:
+        plt.show()        
 
-labels = venn.get_labels([range(10), range(5, 15), range(3, 8), range(8, 17), range(10, 20), range(13, 25)], fill=['number', 'logic'])
-fig, ax = venn.venn6(labels, names=['list 1', 'list 2', 'list 3', 'list 4', 'list 5', 'list 6'])
-fig.savefig('venn6.png', bbox_inches='tight')
-plt.close()
 

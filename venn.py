@@ -134,7 +134,7 @@ def venn2(labels, names=['A', 'B'], **options):
               hence a valid set could look like: {'01': 'text 1', '10': 'text 2', '11': 'text 3'}.
               unmentioned codes are considered as ''.
       names:  group names
-      more:   colors, figsize, dpi, fontsize
+      more:   colors, figsize, dpi, fontsize, name_colors
 
     return
       pyplot Figure and AxesSubplot object
@@ -143,6 +143,7 @@ def venn2(labels, names=['A', 'B'], **options):
     figsize = options.get('figsize', (9, 7))
     dpi = options.get('dpi', 96)
     fontsize = options.get('fontsize', 14)
+    name_colors = options.get('name_colors', [default_colors[i] for i in range(4)])
     
     fig = plt.figure(0, figsize=figsize, dpi=dpi)
     ax = fig.add_subplot(111, aspect='equal')
@@ -158,8 +159,8 @@ def venn2(labels, names=['A', 'B'], **options):
     draw_text(fig, ax, 0.50, 0.30, labels.get('11', ''), fontsize=fontsize)
     
     # legend
-    draw_text(fig, ax, 0.20, 0.56, names[0], colors[0], fontsize=fontsize)
-    draw_text(fig, ax, 0.80, 0.56, names[1], colors[1], fontsize=fontsize)
+    draw_text(fig, ax, 0.20, 0.56, names[0], name_colors[0], fontsize=fontsize)
+    draw_text(fig, ax, 0.80, 0.56, names[1], name_colors[1], fontsize=fontsize)
     leg = ax.legend(names, loc='best', fancybox=True)
     leg.get_frame().set_alpha(0.5)
     
@@ -178,7 +179,7 @@ def venn3(labels, names=['A', 'B', 'C'], **options):
               hence a valid set could look like: {'001': 'text 1', '010': 'text 2', '100': 'text 3', ...}.
               unmentioned codes are considered as ''.
       names:  group names
-      more:   colors, figsize, dpi, fontsize
+      more:   colors, figsize, dpi, fontsize, name_colors
 
     return
       pyplot Figure and AxesSubplot object
@@ -187,6 +188,7 @@ def venn3(labels, names=['A', 'B', 'C'], **options):
     figsize = options.get('figsize', (9, 9))
     dpi = options.get('dpi', 96)
     fontsize = options.get('fontsize', 14)
+    name_colors = options.get('name_colors', [default_colors[i] for i in range(4)])
     
     fig = plt.figure(0, figsize=figsize, dpi=dpi)
     ax = fig.add_subplot(111, aspect='equal')
@@ -207,9 +209,9 @@ def venn3(labels, names=['A', 'B', 'C'], **options):
     draw_text(fig, ax, 0.50, 0.51, labels.get('111', ''), fontsize=fontsize)
     
     # legend
-    draw_text(fig, ax, 0.15, 0.87, names[0], colors[0], fontsize=fontsize)
-    draw_text(fig, ax, 0.85, 0.87, names[1], colors[1], fontsize=fontsize)
-    draw_text(fig, ax, 0.50, 0.02, names[2], colors[2], fontsize=fontsize)
+    draw_text(fig, ax, 0.15, 0.87, names[0], name_colors[0], fontsize=fontsize)
+    draw_text(fig, ax, 0.85, 0.87, names[1], name_colors[1], fontsize=fontsize)
+    draw_text(fig, ax, 0.50, 0.02, names[2], name_colors[2], fontsize=fontsize)
     leg = ax.legend(names, loc='best', fancybox=True)
     leg.get_frame().set_alpha(0.5)
     
@@ -228,7 +230,7 @@ def venn4(labels, names=['A', 'B', 'C', 'D'], **options):
               hence a valid set could look like: {'0001': 'text 1', '0010': 'text 2', '0100': 'text 3', ...}.
               unmentioned codes are considered as ''.
       names:  group names
-      more:   colors, figsize, dpi, fontsize
+      more:   colors, figsize, dpi, fontsize, name_colors
 
     return
       pyplot Figure and AxesSubplot object
@@ -237,7 +239,8 @@ def venn4(labels, names=['A', 'B', 'C', 'D'], **options):
     figsize = options.get('figsize', (12, 12))
     dpi = options.get('dpi', 96)
     fontsize = options.get('fontsize', 14)
-    
+    name_colors = options.get('name_colors', [default_colors[i] for i in range(4)])
+       
     fig = plt.figure(0, figsize=figsize, dpi=dpi)
     ax = fig.add_subplot(111, aspect='equal')
     ax.set_axis_off()
@@ -266,10 +269,10 @@ def venn4(labels, names=['A', 'B', 'C', 'D'], **options):
     draw_text(fig, ax, 0.50, 0.38, labels.get('1111', ''), fontsize=fontsize)
     
     # legend
-    draw_text(fig, ax, 0.13, 0.18, names[0], colors[0], fontsize=fontsize)
-    draw_text(fig, ax, 0.18, 0.83, names[1], colors[1], fontsize=fontsize)
-    draw_text(fig, ax, 0.82, 0.83, names[2], colors[2], fontsize=fontsize)
-    draw_text(fig, ax, 0.87, 0.18, names[3], colors[3], fontsize=fontsize)
+    draw_text(fig, ax, 0.13, 0.18, names[0], name_colors[0], fontsize=fontsize)
+    draw_text(fig, ax, 0.18, 0.83, names[1], name_colors[1], fontsize=fontsize)
+    draw_text(fig, ax, 0.82, 0.83, names[2], name_colors[2], fontsize=fontsize)
+    draw_text(fig, ax, 0.87, 0.18, names[3], name_colors[3], fontsize=fontsize)
     leg = ax.legend(names, loc='best', fancybox=True)
     leg.get_frame().set_alpha(0.5)
     
@@ -288,7 +291,7 @@ def venn5(labels, names=['A', 'B', 'C', 'D', 'E'], **options):
               hence a valid set could look like: {'00001': 'text 1', '00010': 'text 2', '00100': 'text 3', ...}.
               unmentioned codes are considered as ''.
       names:  group names
-      more:   colors, figsize, dpi, fontsize
+      more:   colors, figsize, dpi, fontsize, name_colors
 
     return
       pyplot Figure and AxesSubplot object
@@ -297,6 +300,7 @@ def venn5(labels, names=['A', 'B', 'C', 'D', 'E'], **options):
     figsize = options.get('figsize', (13, 13))
     dpi = options.get('dpi', 96)
     fontsize = options.get('fontsize', 14)
+    name_colors = options.get('name_colors', [default_colors[i] for i in range(4)])
     
     fig = plt.figure(0, figsize=figsize, dpi=dpi)
     ax = fig.add_subplot(111, aspect='equal')
@@ -343,11 +347,11 @@ def venn5(labels, names=['A', 'B', 'C', 'D', 'E'], **options):
     draw_text(fig, ax, 0.51, 0.47, labels.get('11111', ''), fontsize=fontsize)
     
     # legend
-    draw_text(fig, ax, 0.02, 0.72, names[0], colors[0], fontsize=fontsize)
-    draw_text(fig, ax, 0.72, 0.94, names[1], colors[1], fontsize=fontsize)
-    draw_text(fig, ax, 0.97, 0.74, names[2], colors[2], fontsize=fontsize)
-    draw_text(fig, ax, 0.88, 0.05, names[3], colors[3], fontsize=fontsize)
-    draw_text(fig, ax, 0.12, 0.05, names[4], colors[4], fontsize=fontsize)
+    draw_text(fig, ax, 0.02, 0.72, names[0], name_colors[0], fontsize=fontsize)
+    draw_text(fig, ax, 0.72, 0.94, names[1], name_colors[1], fontsize=fontsize)
+    draw_text(fig, ax, 0.97, 0.74, names[2], name_colors[2], fontsize=fontsize)
+    draw_text(fig, ax, 0.88, 0.05, names[3], name_colors[3], fontsize=fontsize)
+    draw_text(fig, ax, 0.12, 0.05, names[4], name_colors[4], fontsize=fontsize)
     leg = ax.legend(names, loc='best', fancybox=True)
     leg.get_frame().set_alpha(0.5)
     
@@ -366,7 +370,7 @@ def venn6(labels, names=['A', 'B', 'C', 'D', 'E'], **options):
               hence a valid set could look like: {'000001': 'text 1', '000010': 'text 2', '000100': 'text 3', ...}.
               unmentioned codes are considered as ''.
       names:  group names
-      more:   colors, figsize, dpi, fontsize
+      more:   colors, figsize, dpi, fontsize, name_colors
 
     return
       pyplot Figure and AxesSubplot object
@@ -375,6 +379,7 @@ def venn6(labels, names=['A', 'B', 'C', 'D', 'E'], **options):
     figsize = options.get('figsize', (20, 20))
     dpi = options.get('dpi', 96)
     fontsize = options.get('fontsize', 14)
+    name_colors = options.get('name_colors', [default_colors[i] for i in range(4)])
     
     fig = plt.figure(0, figsize=figsize, dpi=dpi)
     ax = fig.add_subplot(111, aspect='equal')
@@ -454,12 +459,12 @@ def venn6(labels, names=['A', 'B', 'C', 'D', 'E'], **options):
     draw_text(fig, ax, 0.501, 0.523, labels.get('111111', ''), fontsize=fontsize)
         
     # legend
-    draw_text(fig, ax, 0.674, 0.824, names[0], colors[0], fontsize=fontsize)
-    draw_text(fig, ax, 0.747, 0.751, names[1], colors[1], fontsize=fontsize)
-    draw_text(fig, ax, 0.739, 0.396, names[2], colors[2], fontsize=fontsize)
-    draw_text(fig, ax, 0.700, 0.247, names[3], colors[3], fontsize=fontsize)
-    draw_text(fig, ax, 0.291, 0.255, names[4], colors[4], fontsize=fontsize)
-    draw_text(fig, ax, 0.203, 0.484, names[5], colors[5], fontsize=fontsize)
+    draw_text(fig, ax, 0.674, 0.824, names[0], name_colors[0], fontsize=fontsize)
+    draw_text(fig, ax, 0.747, 0.751, names[1], name_colors[1], fontsize=fontsize)
+    draw_text(fig, ax, 0.739, 0.396, names[2], name_colors[2], fontsize=fontsize)
+    draw_text(fig, ax, 0.700, 0.247, names[3], name_colors[3], fontsize=fontsize)
+    draw_text(fig, ax, 0.291, 0.255, names[4], name_colors[4], fontsize=fontsize)
+    draw_text(fig, ax, 0.203, 0.484, names[5], name_colors[5], fontsize=fontsize)
     leg = ax.legend(names, loc='best', fancybox=True)
     leg.get_frame().set_alpha(0.5)
     
