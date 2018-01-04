@@ -145,6 +145,7 @@ def venn2(labels, names=['A', 'B'], **options):
     fontsize = options.get('fontsize', 14)
     name_colors = options.get('name_colors', [default_colors[i] for i in range(4)])
     ax = options.get('axes')
+    legend_loc = options.get('legend_loc', 'best')
 
     if not ax:
         fig = plt.figure(0, figsize=figsize, dpi=dpi)
@@ -164,8 +165,9 @@ def venn2(labels, names=['A', 'B'], **options):
     # legend
     draw_text(ax, 0.20, 0.56, names[0], name_colors[0], fontsize=fontsize)
     draw_text(ax, 0.80, 0.56, names[1], name_colors[1], fontsize=fontsize)
-    leg = ax.legend(names, loc='best', fancybox=True, fontsize=fontsize)
-    leg.get_frame().set_alpha(0.5)
+    if legend_loc is not None:
+        leg = ax.legend(names, loc=legend_loc, fancybox=True, fontsize=fontsize)
+        leg.get_frame().set_alpha(0.5)
 
     return ax.get_figure(), ax
 
@@ -193,6 +195,7 @@ def venn3(labels, names=['A', 'B', 'C'], **options):
     fontsize = options.get('fontsize', 14)
     name_colors = options.get('name_colors', [default_colors[i] for i in range(4)])
     ax = options.get('axes')
+    legend_loc = options.get('legend_loc', 'best')
 
     if not ax:
         fig = plt.figure(0, figsize=figsize, dpi=dpi)
@@ -218,8 +221,9 @@ def venn3(labels, names=['A', 'B', 'C'], **options):
     draw_text(ax, 0.15, 0.87, names[0], name_colors[0], fontsize=fontsize)
     draw_text(ax, 0.85, 0.87, names[1], name_colors[1], fontsize=fontsize)
     draw_text(ax, 0.50, 0.02, names[2], name_colors[2], fontsize=fontsize)
-    leg = ax.legend(names, loc='best', fancybox=True, fontsize=fontsize)
-    leg.get_frame().set_alpha(0.5)
+    if legend_loc is not None:
+        leg = ax.legend(names, loc=legend_loc, fancybox=True, fontsize=fontsize)
+        leg.get_frame().set_alpha(0.5)
 
     return ax.get_figure(), ax
 
@@ -247,6 +251,7 @@ def venn4(labels, names=['A', 'B', 'C', 'D'], **options):
     fontsize = options.get('fontsize', 14)
     name_colors = options.get('name_colors', [default_colors[i] for i in range(4)])
     ax = options.get('axes')
+    legend_loc = options.get('legend_loc', 'best')
 
     if not ax:
         fig = plt.figure(0, figsize=figsize, dpi=dpi)
@@ -282,8 +287,9 @@ def venn4(labels, names=['A', 'B', 'C', 'D'], **options):
     draw_text(ax, 0.18, 0.83, names[1], name_colors[1], fontsize=fontsize)
     draw_text(ax, 0.82, 0.83, names[2], name_colors[2], fontsize=fontsize)
     draw_text(ax, 0.87, 0.18, names[3], name_colors[3], fontsize=fontsize)
-    leg = ax.legend(names, loc='best', fancybox=True, fontsize=fontsize)
-    leg.get_frame().set_alpha(0.5)
+    if legend_loc is not None:
+        leg = ax.legend(names, loc=legend_loc, fancybox=True, fontsize=fontsize)
+        leg.get_frame().set_alpha(0.5)
 
     return ax.get_figure(), ax
 
@@ -311,6 +317,7 @@ def venn5(labels, names=['A', 'B', 'C', 'D', 'E'], **options):
     fontsize = options.get('fontsize', 14)
     name_colors = options.get('name_colors', [default_colors[i] for i in range(4)])
     ax = options.get('axes')
+    legend_loc = options.get('legend_loc', 'best')
 
     if not ax:
         fig = plt.figure(0, figsize=figsize, dpi=dpi)
@@ -364,8 +371,9 @@ def venn5(labels, names=['A', 'B', 'C', 'D', 'E'], **options):
     draw_text(ax, 0.97, 0.74, names[2], name_colors[2], fontsize=fontsize)
     draw_text(ax, 0.88, 0.05, names[3], name_colors[3], fontsize=fontsize)
     draw_text(ax, 0.12, 0.05, names[4], name_colors[4], fontsize=fontsize)
-    leg = ax.legend(names, loc='best', fancybox=True, fontsize=fontsize)
-    leg.get_frame().set_alpha(0.5)
+    if legend_loc is not None:
+        leg = ax.legend(names, loc=legend_loc, fancybox=True, fontsize=fontsize)
+        leg.get_frame().set_alpha(0.5)
 
     return ax.get_figure(), ax
 
@@ -393,6 +401,7 @@ def venn6(labels, names=['A', 'B', 'C', 'D', 'E'], **options):
     fontsize = options.get('fontsize', 14)
     name_colors = options.get('name_colors', [default_colors[i] for i in range(4)])
     ax = options.get('axes')
+    legend_loc = options.get('legend_loc', 'best')
 
     if not ax:
         fig = plt.figure(0, figsize=figsize, dpi=dpi)
@@ -480,8 +489,9 @@ def venn6(labels, names=['A', 'B', 'C', 'D', 'E'], **options):
     draw_text(ax, 0.700, 0.247, names[3], name_colors[3], fontsize=fontsize)
     draw_text(ax, 0.291, 0.255, names[4], name_colors[4], fontsize=fontsize)
     draw_text(ax, 0.203, 0.484, names[5], name_colors[5], fontsize=fontsize)
-    leg = ax.legend(names, loc='best', fancybox=True, fontsize=fontsize)
-    leg.get_frame().set_alpha(0.5)
+    if legend_loc is not None:
+        leg = ax.legend(names, loc=legend_loc, fancybox=True, fontsize=fontsize)
+        leg.get_frame().set_alpha(0.5)
 
     return ax.get_figure(), ax
 
