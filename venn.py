@@ -1,6 +1,6 @@
 # coding: utf-8
 from itertools import chain
-from collections import Iterable
+from collections.abc import Iterable
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib import colors
